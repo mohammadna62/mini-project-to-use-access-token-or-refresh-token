@@ -1,4 +1,4 @@
-const jwt = reauire("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const genrateAccessToken = (email) => {
   const token = jwt.sign({ email }, process.env.ACCESS_TOKEN_SECRET, {
@@ -6,7 +6,7 @@ const genrateAccessToken = (email) => {
   });
   return token;
 };
-const genrateRefreshToken = () => {
+const genrateRefreshToken = (email) => {
   const token = jwt.sign({ email }, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: "30d",
   });
