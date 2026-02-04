@@ -7,7 +7,7 @@ const booksRouter = require("./routes/books");
 const authRouter = require("./routes/auth");
 const path = require("path");
 const viewsPath = require("./utils/viewsPath");
-
+const cookieParser = require("cookie-parser")
 const { teachersModel, teacherModel } = require("./models/teacher");
 const coursesModel = require("./models/course");
 const coursesRouter = require("./routes/courses");
@@ -18,6 +18,7 @@ const uploader = require("./middlewares/multer");
 require("./configs/db");
 
 const app = express(); // server
+app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));

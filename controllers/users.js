@@ -40,7 +40,7 @@ exports.remove = async (req, res) => {
 
 exports.getAll = async (req, res) => {
   const users = await usersModel.find({}).lean();
-  res.json(users);
+  res.json({users});
 };
 
 exports.getOne = async (req, res) => {

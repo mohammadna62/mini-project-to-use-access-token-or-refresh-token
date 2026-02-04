@@ -21,16 +21,6 @@ const schema = mongoose.Schema({
   refreshToken: String,
 });
 
-// schema.pre("save", function (next) {
-//   // Hash Password
-//   this.password = this.name.toLowerCase();
-//   Hash password
-//   next();
-// });
-
-
-
-
 
 schema.pre('save', async function(next) {
   const user = this;
@@ -53,14 +43,6 @@ schema.pre('save', async function(next) {
   }
 });
 
-
-schema.methods.comparePassword = async function(candidatePassword) {
-  try {
-    return await bcrypt.compare(candidatePassword, this.password);
-  } catch (error) {
-    throw error;
-  }
-};
 
 
 const model = mongoose.model("User", schema);
